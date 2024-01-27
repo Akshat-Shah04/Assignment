@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+
+.main {
+    height: 99vh;
+    width: 100%;
+    background-image: url(backgroundimg.png);
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    background-color: #0b0c0b;
+    /* filter: drop-shadow(5px 5px 5px); */
+    filter: opacity(0.95);
+}
+
+.text {
+    margin-top: 50px;
+    height: auto;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.heading {
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #ffffff;
+    font-weight: 700;
+    font-family: "Source Sans Pro";
+}
+
+.description {
+    width: 1173px;
+    height: 39px;
+    font-size: 14px;
+    line-height: 29px;
+    color: #f4f5f9;
+    font-weight: 400;
+    font-family: "Open Sans";
+    text-align: center;
+}
+
+.design {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.bar {
+    height: 2px;
+    width: 120px;
+    background-color: #fff;
+    opacity: 0.4;
+}
+
+.point {
+    background-color: #e74c3c;
+    border: 1px solid #e74c3c;
+    height: 10px;
+    width: 10px;
+    border-radius: 60px;
+}
+
+svg {
+    position: absolute;
+    bottom: 0;
+}
+
+.b {
+    position: absolute;
+    fill: none;
+    stroke: #e74c3c;
+    stroke-miterlimit: 100;
+    stroke-width: 3;
+    top: 0px;
+}
+
+.pic {
+    width: 51px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #0b0c0b;
+    border: 2px solid #e74c3c;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+}
+
+.cover {
+    position: absolute;
+    opacity: 0;
+    background-color: #e74c3c;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    border: inherit;
+    /* margin-right: 5px; */
+    z-index: 3;
+}
+
+#img1 {
+    background-image: url(pic1.png);
+    top: 63%;
+    left: 280px;
+}
+
+#img2 {
+    background-image: url(pic2.png);
+    top: 56%;
+    left: 600px;
+}
+
+#img3 {
+    background-image: url(pic3.png);
+    top: 58.5%;
+    left: 870px;
+}
+
+#img4 {
+    background-image: url(pic4.png);
+    top: 59%;
+    left: 1110px;
+
+}
+
+#img5 {
+    background-image: url(pic5.png);
+    top: 49%;
+    left: 1300px;
+
+}
+
+.pic:hover {
+    transform: scale(1.5);
+}
+
+.pic:hover .cover {
+    opacity: 0.502;
+}

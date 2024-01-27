@@ -1,0 +1,198 @@
+* {
+    padding: 0;
+    margin: 0%;
+    box-sizing: border-box;
+    background-color: #202020;
+}
+
+body {
+    display: flex;
+}
+
+.main1 {
+    height: 100vh;
+    width: 55%;
+    display: flex;
+}
+
+.child1 {
+    height: inherit;
+    overflow: hidden;
+    width: 10%;
+    border-color: greenyellow;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#colorBar {
+    opacity: 1;
+    width: 2px;
+    height: 34px;
+    background-color: orangered;
+    border: 1px solid orangered;
+}
+
+.bar {
+    opacity: 0.251;
+    width: 1px;
+    height: 34px;
+    background-color: #45576e;
+    border: 1px solid #999999;
+}
+
+/* Child 1 completed */
+.child2 {
+    height: inherit;
+    width: 75%;
+    border: 0px;
+    border-color: red;
+    display: flex;
+    text-align: right;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+.headerTitle {
+    height: 15%;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border: 0px;
+    text-align: right;
+    gap: 10px;
+
+
+}
+
+.text {
+    text-align: right;
+    border: 0px;
+    width: inherit;
+    line-height: 34px;
+    letter-spacing: 4px;
+    color: #f4f5f9;
+    font-weight: 700;
+    font-family: "Source Sans Pro";
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+#tbar {
+    opacity: 1;
+    height: 36px;
+    width: 10px;
+    background-color: orangered;
+    border: 0px;
+}
+
+.wrapper {
+    width: 100%;
+}
+
+.caption {
+    text-transform: uppercase;
+    height: auto;
+    width: 100%;
+    font-size: 18px;
+    line-height: 29px;
+    color: #e74c3c;
+    font-weight: 600;
+    font-family: "Open Sans";
+    text-align: right;
+}
+
+.description {
+    width: 100%;
+    font-size: 14px;
+    line-height: 29px;
+    color: #999999;
+    font-weight: 400;
+    font-family: "Source Sans Pro";
+    text-align: right;
+}
+
+.child3 {
+    height: inherit;
+    width: 15%;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.logoWrapper1 {
+    left: 65%;
+    position: relative;
+}
+
+.logoWrapper2 {
+    position: relative;
+    left: 65%;
+}
+
+.logoWrapper3 {
+    position: relative;
+    left: 65%;
+
+}
+
+.opaque {
+    opacity: 0.251;
+    width: 73px;
+    height: 72px;
+    border-radius: 36px;
+    background-color: #ffffff;
+    position: absolute;
+}
+
+.logoWrapper1>.circle {
+    position: absolute;
+    width: 64px;
+    top: 3.25px;
+    left: 3.75px;
+    height: 64px;
+    border-radius: 32px;
+    background-color: #f4f5f9;
+    background-image: url(pic01-removebg-preview.png);
+    background-size: cover;
+}
+
+.logoWrapper2>.circle {
+    position: absolute;
+    width: 64px;
+    top: 3.25px;
+    left: 3.75px;
+    height: 64px;
+    border-radius: 32px;
+    background-color: #f4f5f9;
+    background-image: url(pic02-removebg-preview.png);
+    background-size: cover;
+}
+
+.logoWrapper3>.circle {
+    position: absolute;
+    width: 64px;
+    top: 3.25px;
+    left: 3.75px;
+    height: 64px;
+    border-radius: 32px;
+    background-color: #f4f5f9;
+    background-image: url(pic03-removebg-preview.png);
+    background-size: cover;
+}
+
+
+.main2 {
+    height: 100vh;
+    width: 45%;
+    background-image: url(bgImage.png);
+    background-position: center;
+    background-size: cover;
+
+}
