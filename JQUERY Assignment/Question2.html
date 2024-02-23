@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery CSS and Animation</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin: 20px;
+            display: inline-block;
+        }
+
+        .red {
+            background-color: red;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            // Applying CSS using jQuery
+            $('#box1').css({
+                'background-color': 'skyblue',
+                'border': '2px solid black',
+                'padding': '20px',
+                'border-radius': '10px'
+            });
+
+            // Adding or removing classes
+            $('#box2').addClass('red');
+            $('#box3').removeClass('box');
+            $('#box4').toggleClass('red');
+
+            // jQuery animations
+            $('#box5').hide(3000);
+            $('#box6').show(3000);
+            $('#box7').fadeOut(3000);
+            $('#box8').fadeIn(3000);
+            $('#box9').slideUp(3000);
+            $('#box10').slideDown(3000);
+            $('#box11').animate({
+                'opacity': 0.5,
+                'margin-left': '50px'
+            }, 3000);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="box1" class="box"></div>
+    <div id="box2" class="box"></div>
+    <div id="box3" class="box"></div>
+    <div id="box4" class="box"></div>
+    <div id="box5" class="box"></div>
+    <div id="box6" class="box" style="display: none;"></div>
+    <div id="box7" class="box"></div>
+    <div id="box8" class="box" style="display: none;"></div>
+    <div id="box9" class="box"></div>
+    <div id="box10" class="box" style="display: none;"></div>
+    <div id="box11" class="box"></div>
+</body>
+
+</html>

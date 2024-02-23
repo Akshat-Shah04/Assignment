@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("body").css({
+                'margin-left': '2px',
+                'border': '2px solid red'
+            })
+
+            $("#child").children().css({
+                "border": "2px solid silver",
+                'color': 'silver',
+            })
+        })
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 1rem;
+            box-sizing: border-box;
+            color: red;
+            border: 2px solid red;
+            display: inline-block;
+        }
+        li{
+            padding-bottom: 2rem;
+            padding-right: 200px;
+        }
+        span{
+            padding-right: 150px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>Body(great-great-grand parent) <br>
+    <div>Div(great-grand parent) <br>
+        <ul>ul(grand parent) <br>
+            <div id="child">li(directparent) <br>
+                <span>span</span>
+            </div>
+        </ul>
+    </div>
+</body>
+
+</html>
