@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoverable Dropdown Navbar with Logo</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        /* Custom CSS for Logo */
+        .navbar-brand img {
+            max-height: 40px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .hImg {
+            height: 200px;
+        }
+
+        .fnt {
+            font-size: 20px;
+        }
+
+        .navunline {
+            width: 100%;
+            height: 1px;
+            background-color: black;
+        }
+
+        /* Custom CSS for hoverable dropdown */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .carousel img {
+            min-height: 500px;
+            max-height: 600px;
+        }
+
+        .mr {
+            margin-right: 130px;
+        }
+
+        .card-title {
+            line-height: 50px;
+        }
+
+        .line {
+            height: 3px;
+            width: 150px;
+            background-color: green;
+        }
+
+        .cardcss:hover {
+            background-color: rgb(250, 192, 85);
+            /* animation: cardanimate 3s ease-in-out normal; */
+        }
+
+        .cardcss-title {
+            color: green;
+        }
+
+        .cardcss-body {
+            color: black;
+        }
+
+        .cardcss:hover .card-title {
+            color: white;
+        }
+
+        .cardcss:hover .line {
+
+            animation: lineAnime 0.5s forwards;
+        }
+
+        @keyframes lineAnime {
+            0% {
+                background-color: green;
+                width: 150px;
+            }
+
+            50% {
+                width: 0px;
+            }
+
+            100% {
+                width: 150px;
+                background-color: white;
+            }
+        }
+
+        .card:hover .card-body {
+            color: white;
+        }
+
+        .btn:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.608);
+            margin-bottom: 200px;
+            background-color: #0c3208;
+        }
+
+        /*  */
+        /*  */
+        #carouselExampleControls {
+            margin-top: -300px;
+        }
+
+        /* #myCarousel {
+            margin-top: -500px;
+        } */
+
+        #view1:hover {
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-inner .carousel-item>div {
+                display: none;
+            }
+
+            .carousel-inner .carousel-item>div:first-child {
+                display: block;
+            }
+        }
+
+        .carousel-inner .carousel-item.active,
+        .carousel-inner .carousel-item-start,
+        .carousel-inner .carousel-item-next,
+        .carousel-inner .carousel-item-prev {
+            display: flex;
+        }
+
+        @media (min-width: 768px) {
+
+            .carousel-inner .carousel-item-right.active,
+            .carousel-inner .carousel-item-next,
+            .carousel-item-next:not(.carousel-item-start) {
+                transform: translateX(25%) !important;
+            }
+
+            .carousel-inner .carousel-item-left.active,
+            .carousel-item-prev:not(.carousel-item-end),
+            .active.carousel-item-start,
+            .carousel-item-prev:not(.carousel-item-end) {
+                transform: translateX(-25%) !important;
+            }
+
+            .carousel-item-next.carousel-item-start,
+            .active.carousel-item-end {
+                transform: translateX(0) !important;
+            }
+
+            .carousel-inner .carousel-item-prev,
+            .carousel-item-prev:not(.carousel-item-end) {
+                transform: translateX(-25%) !important;
+            }
+        }
+
+        .social {
+            height: 250px;
+            width: 50px;
+            border: 0px;
+            display: flex;
+            flex-direction: column;
+            background-color: green;
+            position: sticky;
+            top: 30%;
+            left: 0px;
+            z-index: 5;
+        }
+
+        .brands {
+            height: 50px;
+            background-size: contain;
+            width: 50px;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        #b1 {
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5SP40DnWVAa3G3NUxiXel-D4M8mRZ8Hj21mHE047vcHh_HLGL);
+        }
+
+        #b2 {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAbFBMVEU7WZj////e4uwoTZLr7fQvUpUtUJT7/P04WJnQ1uT4+fy0vdM8Wpk0VJXh5e4hSJB4irTHzt9KZZ+PnsCgrMlxhLFQaqLy9PiVosKlscxkeKmHl7yrtc6DlLpqfqxXbqTCydzV2+dDYZ4YRI/fiYA0AAAEX0lEQVR4nO3d23qiMBiFYTCAQRs24t5Orfb+73G0jk9tp5UlEMKfru9oTobhbdkNgRCEH0XZyI+y6EYVXP9QFjpRvpToovwiLGfKBD5l1Ky8FVa5dr1Knafz6kNYKNerYyVVXIWVn8ATsboI09z1mlgrT9+FM//2wWt6dhaWvm6j51R5EhZ+nSY+Z4qT0N9t9JwOgyhxvRJWS6Ig83k3PO2IWTDyXDiiUHoUyo9C+VEoPwrlR6H8KJQfhfKjUH4Uuk1rY0wcJ+fiU+ac1jp44AbocIUmVrlZbovder553mw28/m62v0pFi/b/exoLsOgsamnDlOoY/X0Mn+NVuH3TVar6FBOn6vFspY4RGGslvPD5Afcl6a1t7MHJ9RKzzNMJ1Ko831Zz5Ir1GqfPuSTJkyOrw/6ZAm12oFHF6FCYx7bAcUJ4/1P5z5PhJcHXzwWql1DoBShqpoChQiTppuoFKHZNgeKEGrT7CgqR5g/eqEmTZg0P8rIEOpjK6AAoWp0rSZIaF7aAYcvVCPPhWbREjh4YX7wXKj3bYFDFyZT34V5g9sWooTtjzNDF3awkQ5cmEf1AtHC88sefgvjRv+rGH9q2EL1wB3uaLpe7I/Hp/8b8uiaQoeYVpulUrHR32GGPEKqzRgDbuKkzVs9DoVLyDfetlw9d0KD3UPcxi3/HXfCeI4A27/d6k4IXdFkqvWLde6E0B2aP+1fjXQoPNQDJx28++lQCJwO0w5WzaEQuO6etz2QBk6PNIBwIXorjQFh/TNd9TkTakTYxTvYwxbG3v8OW11y/2vQwjGFSBRai0IK4Si0FoUUwlFoLQophKPQWhRSCEehtX6BELgjPHyhDvTPYb/D+wVPboU6rjW0DZiY1KowsS7cu30Woweh663UunAF3PaXLUSmXpUtROZ4li18BiYIli1cA6PgsoXIKLhsITKZvGwhct0qWhghay5aCK25aOGr98INMl++aGGFPBQmWviCPBQmWnhEbnKIFkKfx5EsjLwXYs/XShZCp0PRQuwJYslC7EF+yULodChaCJ0OJQvH2NfiBAsz74Xg6yaChfWvAEsXIrcSZQvBT/4JFm6xAWKrY8AmvRcw7cfdv3/EVsLuOP69bxK/AaPcb/cWgK4Dn8WwFYUUwlFoLQophKPQWhRSCEehtSikEI5Ca1FIIRyF1qKQQjgKrUUhhXAUWotCCuEotBaFFMJRaC0KKYSj0FoUUghHobUopBCOQmtRSCEchdaikEI4Cq1FIYVwFFqLQgrhKLQWhRTCUWgtCimE+xVCZFLs7utPmAURNs9Lx/UmTKKgk2/SPlxvQh0G6EQv3daX0BQnITJ3e+f1JVTlSQhNi911PQn1LDwLU2xesE7rSZin78Kw6n877UeoqvAiDIveib0IVRFehWGV97wv9iDUeRV+CMN0pno9aVj/3pNRszS8FYZhWejk3sxTHQfMhDV5a7z0RBfldTHBzSKjbNRfk/oaLzu7/fH9Bd9ZZCH9N718AAAAAElFTkSuQmCC);
+        }
+
+        #b3 {
+            background-image: url(data:image/png;base64,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);
+        }
+
+        #b4 {
+
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQkS1FYBydQDyyLgy9H_hueBXOw3g5bkG_4w&usqp=CAU);
+        }
+
+        #b5 {
+            background-image: url(data:image/png;base64,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);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Navbar</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-+0wi2sIDWS4qszQB4jDdRIKgpYD0K9jcQPK8Mai2RWBOb7jQdaXAtm2XQq3gJTzB" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <a class="navbar-brand" href="#"><img
+                    src="https://reliancefoundation.org/o/rfoundation-theme/images/common/logo.jpg" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavMain"
+                aria-controls="navbarNavMain" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavMain">
+                <ul class="navbar-nav ml-auto mr">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-uppercase" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Who we are
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <a class="dropdown-item" href="#">About the Chairperson</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">About Reliance Foundation</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Awards</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Annual Reports</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Career</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Contact Us</a>
+                        </div>
+                    </li>
+                    <li class="nav-item d-lg-inline d-md-none d-sm-none">
+                        <span class="nav-link">/</span>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-uppercase" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            What we do
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <a class="dropdown-item" href="#">Rural Transformation</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Health</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Education</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Sports for Development</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Women Empowerment</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Disaster Management</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Arts,Culture & Heritage</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Urban Renewal</a>
+                        </div>
+                    </li>
+                    <li class="nav-item d-lg-inline d-xl-inline d-md-none d-sm-none">
+                        <span class="nav-link">/</span>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-uppercase" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Media
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                            <a class="dropdown-item" href="#">Publications</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Stories About Our Work</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Press Release</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Events & Updates</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Gallery</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">COVID-19 Response</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">COVID-19 awareness Toolkit</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Bootstrap JS (optional) -->
+        <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"
+            integrity="sha384-hqRo1m5WZrQVcGr6G5O6s4vOSIst8sO+IQDY6SYYFhF/nH8RqDip4AnY7JpFfofG"
+            crossorigin="anonymous"></script> -->
+
+        <div class="navunline"></div>
+        <div class="social">
+            <div class="brands" id="b1"></div>
+            <div class="brands" id="b2"></div>
+            <div class="brands" id="b3"></div>
+            <div class="brands" id="b4"></div>
+            <div class="brands" id="b5"></div>
+        </div>
+        <div id="carouselExampleControls" class="carousel slide mx-auto mt-0" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100"
+                        src="https://reliancefoundation.org/documents/36511/37039/smt-nita-m-ambani.jpg/ce51818f-be8b-2125-1650-de948bb22d18?t=1674482415019"
+                        alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100"
+                        src="https://reliancefoundation.org/documents/36511/104909/Stronger+together+publication.png/ca05c0a2-90b5-33d6-c7e6-d08dd1517246?t=1708666497019"
+                        alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100"
+                        src="https://reliancefoundation.org/documents/36511/104909/RF+AR+2022-23+Web+Banner.png/983e7efb-89c8-c2d4-b4b2-d9f4fe7096a2?t=1699528262495"
+                        alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100"
+                        src="https://reliancefoundation.org/documents/36511/37039/Transforming+and+supporting+education+in+India.jpg/c609e331-8f04-d55d-6020-3beb5c3332e8?t=1677941460868"
+                        alt="Fourth slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100"
+                        src="https://reliancefoundation.org/documents/36511/37039/Strengthening+India%E2%80%99s+public+health+infrastructure.jpg/dfdb0a66-78c8-9bf9-d5d9-e34a846b15bf?t=1674630410847"
+                        alt="Fifth slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!-- Slider ends -->
+
+        <!-- Cards Start -->
+        <div class="container mt-5 mb-5">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card cardcss h-100 d-flex flex-column justify-content-center align-items-center">
+                        <div class="card-body text-center align-items-center justify-content-center d-flex flex-column">
+                            <h3 class="card-title text-uppercase">who we are</h3>
+                            <div class="line"></div>
+                            <p class="card-text fnt mt-3">Under the virtuous leadership of Smt.Nita M Ambani, Reliance
+                                foundation was set up in 2010 to provide imperus to various philantrophic initiatives of
+                                Reliance Industries Ltd.</p>
+                        </div>
+                        <button type="button" class="btn w-50 p-3 btn-success text-capitalize mb-5 mt-3">Show
+                            more</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card cardcss  h-100 d-flex flex-column justify-content-center align-items-center">
+                        <div class="card-body text-center align-items-center justify-content-center d-flex flex-column">
+                            <h3 class="card-title text-uppercase">What we do</h3>
+                            <div class="line"></div>
+                            <p class="card-text fnt mt-3">Rural Transformation, Health, Education, Sports for
+                                Development,
+                                Women Empowerment, Disaster Management, Arts, Culture & Heritage and Urban Renewal </p>
+                        </div>
+                        <button type="button" class="btn w-50 p-3 btn-success text-capitalize mb-5 mt-3">Show
+                            more</button>
+
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card cardcss h-100 d-flex flex-column justify-content-center align-items-center">
+                        <div class="card-body text-center align-items-center justify-content-center d-flex flex-column">
+                            <h3 class="card-title text-uppercase">Media</h3>
+                            <div class="line"></div>
+                            <p class="card-text fnt mt-3">Real-life stories of people whose lives havebeen touched by
+                                Relaince Foundation; Photos, Videos, News, Press Releases and Events & Updates</p>
+                        </div>
+                        <button type="button" class="btn w-50 p-3 btn-success text-capitalize mb-5 mt-3">Show
+                            more</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Card Ends -->
+        <!-- Accordian Starts -->
+        <div
+            class="container-fluid d-flex flex-lg-row flex-md-row flex-sm-column align-items-sm-center justify-content-sm-center">
+            <img src="https://reliancefoundation.org/documents/36511/62747/Resized+cover.jpg/eb4e155d-9fda-0701-9b5a-43cdb03a6698?t=1680176355746"
+                alt="" class="mx-lg-5 mx-md-5 img-fluid w-25 my-sm-3">
+            <div class="accordion w-100" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button text-success collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Accordion Item #1
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+                        <div class="accordion-body">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi error eligendi molestiae in
+                            ullam, ex alias unde, obcaecati adipisci ad accusamus veritatis facere atque aliquam
+                            repudiandae, eius soluta saepe quasi.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button text-success collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Accordion Item #2
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                        <div class="accordion-body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius iusto incidunt facere voluptas
+                            possimus adipisci distinctio quaerat, commodi voluptate laborum, neque officiis vel numquam
+                            labore, accusantium repellendus aliquam nobis assumenda voluptatem!
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button text-success collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Accordion Item #3
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+                        <div class="accordion-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate temporibus voluptatibus
+                            asperiores dicta incidunt sunt nemo recusandae amet architecto corrupti molestias mollitia,
+                            quaerat sapiente odit aut modi fuga possimus omnis quas, hic nobis. Impedit, exercitationem
+                            excepturi!
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header " id="headingFour">
+                        <button class="accordion-button text-success collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Accordion Item #4
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+                        <div class="accordion-body">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi error eligendi molestiae in
+                            ullam, ex alias unde, obcaecati adipisci ad accusamus veritatis facere atque aliquam
+                            repudiandae, eius soluta saepe quasi.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="text-success accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Accordion Item #5
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive">
+                        <div class="accordion-body">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi error eligendi molestiae in
+                            ullam, ex alias unde, obcaecati adipisci ad accusamus veritatis facere atque aliquam
+                            repudiandae, eius soluta saepe quasi.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collapse ends -->
+        <!-- gallery -->
+        <div class="container-fluid d-flex flex-column align-items-center justify-content-center mt-5 p-1"
+            style="background-color: #f3f8fa;">
+            <div class="container mt-5 text-center" style="color: #d3ab6e; font-size: 29px;">Gallery</div>
+            <div class="bg-success mb-5" style="width: 90px; height: 3px;"></div>
+
+            <div class="container-fluid row justify-content-center mb-5">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card text-center">
+                        <img src="https://reliancefoundation.org/documents/36511/76087/Making+a+difference+with+technology.jpg/fab4314e-cc2c-b13a-7d1f-1af03b0d5f86?t=1686217598344"
+                            alt="" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Make a difference with technology</h5>
+                            <p class="card-text">Rural Transformation</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-md-3">
+                    <div class="card text-center">
+                        <img src="https://reliancefoundation.org/documents/36511/76087/ESA+day.jpg/50b04306-5722-6219-53a7-9a9965f35478?t=1686217598376"
+                            alt="" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Education and Sports for all</h5>
+                            <p class="card-text">Sports for Development</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-md-3">
+                    <div class="card text-center">
+                        <img src="https://reliancefoundation.org/documents/36511/76087/ESA+day.jpg/50b04306-5722-6219-53a7-9a9965f35478?t=1686217598376"
+                            alt="" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Education and Sports for all</h5>
+                            <p class="card-text">Sports for Development</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-md-3">
+                    <div class="card text-center">
+                        <img src="https://reliancefoundation.org/documents/36511/76087/ESA+day.jpg/50b04306-5722-6219-53a7-9a9965f35478?t=1686217598376"
+                            alt="" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Education and Sports for all</h5>
+                            <p class="card-text">Sports for Development</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more cards as needed -->
+            </div>
+
+            <div class="text-center">
+                <button type="button" class="btn btn-success text-uppercase px-4" id="view1">View All</button>
+            </div>
+        </div>
+
+        <!-- gallery ends -->
+        <!-- footer starts -->
+        <div class="container-fluid d-md-flex flex-md-row align-items-start justify-content-center gap-md-4 gap-sm-1"
+            style="color: #212529;background-color: #fad88f; padding: 20px;">
+            <div class="container d-flex flex-column">
+                <div class="mt-4 text-start text-uppercase mb-4" style="color: #966702;">About Us</div>
+                <div class="text-start text-capitalize">To know more about Reliance Foundation. <a href="#">Click
+                        here</a>
+                </div>
+                <img src="" alt="">
+            </div>
+            <div class="container d-flex flex-column">
+                <div class="mt-4 text-start text-uppercase mb-4" style="color: #966702;">Focus Area</div>
+                <a href="#" class="mb-2">Link 1</a>
+                <a href="#" class="mb-2">Link 2</a>
+                <a href="#" class="mb-2">Link 3</a>
+                <a href="#" class="mb-2">Link 4</a>
+                <a href="#" class="mb-2">Link 5</a>
+            </div>
+            <div class="container d-flex flex-column">
+                <div class="mt-4 text-start text-uppercase mb-4" style="color: #966702;">Contact</div>
+                <a href="#" class="text-decoration-none mb-2"
+                    style="color: #212529;">contactus@reliancefoundation.org</a>
+                <button class="p-2 btn btn-success text-white text-uppercase mt-2" style="font-size: 11px;">Caution
+                    Notice</button>
+            </div>
+            <div class="container d-flex flex-column">
+                <div class="mt-4 text-start text-uppercase mb-4" style="color: #966702;">Sign up for updates</div>
+                <div class="">To stay updated with Reliance Foundation's latest news and programs, enter your email
+                    below.
+                </div>
+                <input type="email" class="mt-2 mb-2">
+                <button class="text-white mb-2 btn btn-warning text-uppercase" type="submit"
+                    style="width: 130px;">Submit</button>
+            </div>
+        </div>
+
+
+        <!-- footer ends -->
+        <!--  -->
+
+    </body>
+
+    </html>
