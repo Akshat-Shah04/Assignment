@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Question 8</h1>
+    
+    <h3>Enter length : </h3>
+    <input type="number" id="len">
+    
+    <h3>Enter base : </h3>
+    <input type="number" id="base">
+
+    <h3><b>Result : <span id="result"></span></b></h3>
+    <button type="button" onclick="calcArea()">Calculate Area</button>
+
+    <script>
+        function calcArea() {
+            var l = document.getElementById('len').value;
+            var b = document.getElementById('base').value;
+            var res = document.getElementById('result');
+
+            var area = 0.5 * l * b;
+            res.innerHTML = area;
+        }
+    </script>
+</body>
+
+</html>

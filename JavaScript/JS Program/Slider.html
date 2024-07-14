@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #2c2c2c;
+        }
+        h1{
+            color: #fff;
+            margin-left: 45%;
+        }
+        .main {
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 10px;
+            left: 25%;
+            width: 50%;
+            height: 100%;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide:nth-child(1) {
+            background-color: #F0D64E;
+        }
+
+        .slide:nth-child(2) {
+            background-color: #F04E4E;
+        }
+
+        .slide:nth-child(3) {
+            background-color: #6864CF;
+        }
+
+        .slide:nth-child(4) {
+            background-color: #4ECF75;
+        }
+
+        .slide:nth-child(5) {
+            background-color: #4E9ECF;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JS Slider</h1>
+    <div class="main">
+        <div class="slide"></div>
+        <div class="slide" style="opacity: 0;"></div>
+        <div class="slide" style="opacity: 0;"></div>
+        <div class="slide" style="opacity: 0;"></div>
+        <div class="slide" style="opacity: 0;"></div>
+    </div>
+    <div class="btn-container">
+        <button onclick="prevSlide()">Previous</button>
+        <button onclick="nextSlide()">Next</button>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.style.opacity = 1;
+                } else {
+                    slide.style.opacity = 0;
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        showSlide(currentIndex);
+    </script>
+</body>
+
+</html>

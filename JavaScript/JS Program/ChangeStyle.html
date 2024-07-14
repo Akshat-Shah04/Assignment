@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #one {
+            color: blue;
+            font-size: 20px;
+        }
+
+        .new-style {
+            color: purple;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div id="one">This is a sample text.</div>
+    <button onclick="changeStyle()">Change Style</button>
+    <button onclick="changeClass()">Change Class</button>
+
+    <script>
+        function changeStyle() {
+            const element = document.getElementById('one');
+            element.style.color = 'red';
+            element.style.fontSize = '30px';
+        }
+
+        function changeClass() {
+            const element = document.getElementById('one');
+            element.className = ''; // Clear all existing classes
+            element.classList.add('new-style'); // Add the new class
+        }
+    </script>
+</body>
+</html>

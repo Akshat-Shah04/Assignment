@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation Example</title>
+    <style>
+        form {
+            width: 400px;
+            border: 5px solid black;
+            margin: 5px;
+            padding: 10px;
+        }
+        h1{
+            margin-left: 35px;
+        }
+        input[type=radio] {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .group {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Form Validation Example</h1>
+    <form id="myForm" onsubmit="return validateForm()">
+        <div class="group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" onblur="validateName()">
+            <span id="nameError" class="error"></span>
+        </div>
+
+        <br>
+
+        <div class="group">
+            <label for="bDate">Birth Date</label>
+            <input type="date" id="bDate" name="bDate" onblur="validateBirthDate()">
+            <span id="bDateError" class="error"></span>
+        </div>
+        <br>
+        <div class="group">
+            <label for="phone">Mobile Number</label>
+            <input type="tel" id="phone" name="phone" onblur="validatePhone()">
+            <span id="phoneError" class="error"></span>
+        </div>
+        <br>
+        <div class="group">
+            <label for="mail">Email</label>
+            <input type="email" id="mail" name="mail" onblur="validateEmail()">
+            <span id="mailError" class="error"></span>
+        </div>
+        <br>
+        <div class="group">
+            <div class="subgroup">
+                <label for="gender" style="margin-right: 20px;">Gender</label><br>
+                <input type="radio" name="gender" value="Male" id="male">Male
+                <input type="radio" name="gender" value="Female" id="female">Female
+            </div>
+            <span id="genderError" class="error"></span>
+        </div>
+        <br>
+        <div class="group">
+            <label for="location">Address</label>
+            <textarea name="address" id="location" cols="30" rows="4"></textarea>
+            <span id="addressError" class="error"></span>
+        </div>
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateName() {
+            const name = document.getElementById('name').value;
+            const nameError = document.getElementById('nameError');
+            if (name === "") {
+                nameError.textContent = "Name is required.";
+                return false;
+            } else {
+                nameError.textContent = "";
+                return true;
+            }
+        }
+
+        function validateBirthDate() {
+            const bDate = document.getElementById('bDate').value;
+            const bDateError = document.getElementById('bDateError');
+            if (bDate === "") {
+                bDateError.textContent = "Birth date is required.";
+                return false;
+            } else {
+                bDateError.textContent = "";
+                return true;
+            }
+        }
+
+        function validatePhone() {
+            const phone = document.getElementById('phone').value;
+            const phoneError = document.getElementById('phoneError');
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone)) {
+                phoneError.textContent = "Invalid phone number. Must be 10 digits.";
+                return false;
+            } else {
+                phoneError.textContent = "";
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const email = document.getElementById('mail').value;
+            const mailError = document.getElementById('mailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                mailError.textContent = "Invalid email address.";
+                return false;
+            } else {
+                mailError.textContent = "";
+                return true;
+            }
+        }
+
+        function validateForm() {
+            const isNameValid = validateName();
+            const isBDateValid = validateBirthDate();
+            const isPhoneValid = validatePhone();
+            const isEmailValid = validateEmail();
+
+            return isNameValid && isBDateValid && isPhoneValid && isEmailValid;
+        }
+    </script>
+</body>
+
+</html>

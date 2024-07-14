@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet For Information Technology</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            width: 480px;
+            padding: 20px;
+            border: 4px solid black;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2,
+        h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            flex: 1;
+        }
+
+        .form-group input {
+            flex: 1;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #dis {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #total,
+        #percentage {
+            color: #333;
+            font-weight: bold;
+        }
+
+        #sum,
+        #per {
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <h2>Marksheet For Information Technology</h2>
+        <h3>Enter Marks</h3>
+
+        <div class="form-group">
+            <label for="c_language">1. C Language</label>
+            <input type="number" id="c_language">
+        </div>
+
+        <div class="form-group">
+            <label for="cpp_language">2. C++ Language</label>
+            <input type="number" id="cpp_language">
+        </div>
+
+        <div class="form-group">
+            <label for="database">3. Database</label>
+            <input type="number" id="database">
+        </div>
+
+        <div class="form-group">
+            <label for="html">4. HTML</label>
+            <input type="number" id="html">
+        </div>
+
+        <div class="form-group">
+            <label for="css">5. CSS</label>
+            <input type="number" id="css">
+        </div>
+
+        <div class="form-group">
+            <label for="php">6. PHP</label>
+            <input type="number" id="php">
+        </div>
+
+        <div class="form-group">
+            <label for="core_java">7. Core Java</label>
+            <input type="number" id="core_java">
+        </div>
+
+        <button type="button" onclick="calculateResult()">Result</button>
+
+        <div id="dis">
+            <div id="total">Total is: <span id="sum">000</span> / 350</div>
+            <div id="percentage">Percentage is: <span id="per">00</span> %</div>
+        </div>
+    </form>
+
+    <script>
+        function calculateResult() {
+
+            const c_language = parseInt(document.getElementById('c_language').value) || 0;
+            const cpp = parseInt(document.getElementById('cpp_language').value) || 0;
+            const database = parseInt(document.getElementById('database').value) || 0;
+            const html = parseInt(document.getElementById('html').value) || 0;
+            const css = parseInt(document.getElementById('css').value) || 0;
+            const php = parseInt(document.getElementById('php').value) || 0;
+            const java = parseInt(document.getElementById('core_java').value) || 0;
+
+
+            if (c_language > 50 || cpp > 50 || database > 50 || html > 50 || css > 50 || php > 50 || java > 50) {
+                alert('Marks Exceed Range!! Please Re-enter marks.');
+                return;
+            }
+
+            const totalMarks = c_language + cpp + database + html + css + php + java;
+            const percentage = (totalMarks / 350) * 100;
+
+            let sum = document.getElementById('sum');
+            let percent = document.getElementById('per');
+
+            sum.style.color = 'AQUA';
+            percent.style.color = 'AQUA';
+
+            // Display results
+            document.getElementById('sum').textContent = totalMarks;
+            document.getElementById('per').textContent = percentage.toFixed(2);
+        }
+    </script>
+</body>
+
+</html>

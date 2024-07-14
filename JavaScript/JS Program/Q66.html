@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function findLength(str) {
+            let arr = str.split("");
+            let count = 0; 
+            arr.forEach(element => {
+                count++;
+            });
+            return count;
+        }
+
+        let str1 = 'Hello';
+        let str2 = 'Abcd-efg';
+        console.log("Length of String '",str1,"' is : ",findLength(str1)); 
+        console.log("Length of String '",str2,"' is : ",findLength(str2)); 
+    </script>
+</body>
+
+</html>

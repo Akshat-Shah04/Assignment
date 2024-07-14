@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Question 7</h1>
+    <script>
+        var a = 10
+        var b = '10'
+        if (typeof a === typeof b) {
+            console.log("Match")
+        }
+        else {
+            console.log("A -> " + typeof a)
+            console.log("B -> " + typeof b)
+            console.log("After parsing....");
+            var b = parseInt(b)
+            console.log("A -> " + typeof a)
+            console.log("B -> " + typeof b)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 11 | Circumference of Square</title>
+</head>
+
+<body>
+    <h3>Enter Days : </h3>
+    <input type="number" id="day" placeholder="Enter Days">
+    <h3>Result : <span id="res1"></span></h3>
+    <button id="b1" onclick="convertToYears()">Click</button>
+    
+    <!--  -->
+    
+    <h3>Enter Years : </h3>
+    <input type="number" id="year" placeholder="Enter Years">
+    <h3>Result : <span id="res2"></span></h3>
+    <button id="b2" onclick="convertToDays()">Click</button>
+    
+    <script>
+        function convertToDays() {
+            let years = document.getElementById('year').value;
+            let result = years * 365;
+            document.getElementById('res2').innerHTML = result;
+        }
+        function convertToYears() {
+            let days = document.getElementById('day').value;
+            let result = days / 365;
+            document.getElementById('res1').innerHTML = result;
+
+        }
+    </script>
+</body>
+
+</html>

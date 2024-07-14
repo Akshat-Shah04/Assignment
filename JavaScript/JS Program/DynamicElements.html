@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Elements</title>
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+
+        .dynamic-element {
+            background-color: lightblue;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid rgb(255, 38, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="addElement()">Add New Element</button>
+    <div class="container" id="container"></div>
+
+    <script>
+        let elementCount = 0;
+
+        function addElement() {
+            const newDiv = document.createElement('div');
+            newDiv.className = 'dynamic-element';
+
+            elementCount++;
+
+            const newContent = document.createTextNode(`This is dynamically added element ${elementCount}`);
+
+            newDiv.appendChild(newContent);
+
+            const container = document.getElementById('container');
+            container.appendChild(newDiv);
+        }
+    </script>
+</body>
+
+</html>

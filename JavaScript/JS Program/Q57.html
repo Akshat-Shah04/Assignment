@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            padding: 20px 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JS Events</h1>
+    <button id="click" onclick="click1()">Onclick</button>
+    <button id="dblclick" ondblclick="dblclick()">Ondblclick</button>
+    <hr>
+    Onfocus<input type="text" name="" id="focus" onfocus="focus1()"><hr>
+    Onblur<input type="text" name="" id="blur" onblur="blur1()">
+    <hr>
+    Onkeydown<input type="text" name="" id="kydwn" onkeydown="keydown()">
+    <hr>
+    Onkeypress<input type="text" name="" id="kyprs" onkeypress="keypress()">
+    <hr>
+    Onkeyup<input type="text" name="" id="kyup" onkeyup="keyup()">
+    <hr>
+    <button id="mouseenter" onmouseenter="mEnter()">OnMouseEnter</button>
+    <button id="mouseexit" onmouseleave="mLeave()">OnMouseLeave</button>
+    <button id="mouseout" onmouseout="mOut()">OnMouseOut</button>
+    <button id="mousedown" onmousedown="mDown()">OnMouseDown</button>
+    <hr>
+    <h1 style="background-color: yellow; color:  red;" id="h1">Output</h1>
+    <script>
+        h1 = document.getElementById('h1');
+        click1 = () => {
+            h1.innerHTML = "Onclick event fired!";
+        }
+
+        dblclick = () => {
+            h1.innerHTML = "Ondblclick event fired!";
+        }
+
+        focus1 = () => {
+            h1.innerHTML = "Onfocus event fired!";
+
+        }
+
+        blur1 = () => {
+            h1.innerHTML = "Onblur event fired!";
+        }
+
+        keydown = () => {
+            h1.innerHTML = "Onkeydown event fired!";
+        }
+
+
+        keypress = () => {
+            h1.innerHTML = "Onkeypress event fired!";
+        }
+
+
+        keyup = () => {
+            h1.innerHTML = "Onkeyup event fired!";
+        }
+
+        mEnter = () => {
+            h1.innerHTML = "OnmouseEnter event fired!";
+        }
+        mOut = () => {
+            h1.innerHTML = "OnmouseOut event fired!";
+        }
+        mDown = () => {
+            h1.innerHTML = "OnmouseDown event fired!";
+        }
+        mLeave = () => {
+            h1.innerHTML = "OnmouseLeave event fired!";
+        }
+    </script>
+</body>
+
+</html>
