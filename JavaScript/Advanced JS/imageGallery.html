@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Grid with Modal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .gallery-img {
+            cursor: pointer;
+            width: 100%;
+            /* Ensures images take the full width of their container */
+            height: 200px;
+            /* Set a fixed height for uniformity */
+            border: 2px solid black;
+            object-fit: cover;
+            /* Ensures images maintain aspect ratio */
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.1);
+            transition: ease-in .25s;
+            box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Responsive Image Grid with Modal</h2>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <img src="https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    class="gallery-img img-fluid" data-index="0" alt="Image 1">
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <img src="https://images.pexels.com/photos/1743165/pexels-photo-1743165.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    class="gallery-img img-fluid" data-index="1" alt="Image 2">
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <img src="https://images.pexels.com/photos/52531/way-clouds-seat-belts-direction-52531.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    class="gallery-img img-fluid" data-index="2" alt="Image 3">
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <img src="https://images.pexels.com/photos/2793170/pexels-photo-2793170.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    class="gallery-img img-fluid" data-index="3" alt="Image 4">
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <img src="https://images.pexels.com/photos/209251/pexels-photo-209251.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    class="gallery-img img-fluid" data-index="4" alt="Image 5">
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <img src="https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    class="gallery-img img-fluid" data-index="5" alt="Image 6">
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <img src="https://images.pexels.com/photos/962312/pexels-photo-962312.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    class="gallery-img img-fluid" data-index="6" alt="Image 7">
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <img src="https://images.pexels.com/photos/247160/pexels-photo-247160.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    class="gallery-img img-fluid" data-index="7" alt="Image 8">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-0 position-relative">
+                    <button type="button" class="btn-close btn-danger position-absolute end-0 me-2 mt-2"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                    <img src="" class="img-fluid" id="modalImage" alt="Modal Image">
+                    <button class="carousel-control-prev" type="button" id="prevBtn"
+                        style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%);">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" id="nextBtn"
+                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.gallery-img');
+        const modalImage = document.getElementById('modalImage');
+        const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+        let i = 0;
+
+        const imgSrc = [
+            "https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "https://images.pexels.com/photos/1743165/pexels-photo-1743165.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "https://images.pexels.com/photos/52531/way-clouds-seat-belts-direction-52531.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "https://images.pexels.com/photos/2793170/pexels-photo-2793170.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "https://images.pexels.com/photos/209251/pexels-photo-209251.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "https://images.pexels.com/photos/962312/pexels-photo-962312.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "https://images.pexels.com/photos/247160/pexels-photo-247160.jpeg?auto=compress&cs=tinysrgb&w=600",
+        ];
+
+        const showImage = (index) => {
+            modalImage.src = imgSrc[index];
+            i = index;
+            imageModal.show();
+        };
+
+        images.forEach(img => {
+            img.addEventListener('click', (e) => {
+                const index = e.target.dataset.index;
+                showImage(index);
+            });
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            i = (i + 1) % imgSrc.length;
+            showImage(i);
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            i = (i - 1 + imgSrc.length) % imgSrc.length;
+            showImage(i);
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            background-color: rgb(2, 2, 93);
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            min-height: 95vh;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(2, 2, 93);
+            gap: 20px;
+        }
+
+        .box {
+            border: 2px dashed white;
+            min-height: 400px;
+            width: 300px;
+    
+        }
+
+        .list {
+            background-color: yellowgreen;
+            margin: 25px;
+            font-size: 16px;
+            padding: 20px 40px;
+            color: red;
+            font-weight: bolder;
+            cursor: move    ;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Drag and Drop Feature</h1>
+    <div class="container">
+        <div class="box" id="one">
+            <div class="list" draggable="true">Drag Item 1</div>
+            <div class="list" draggable="true">Drag Item 2</div>
+            <div class="list" draggable="true">Drag Item 3</div>
+            <div class="list" draggable="true">Drag Item 4</div>
+        </div>
+        <div class="box" id="two"></div>
+    </div>
+
+    <script>
+        let list = document.querySelectorAll('.list');
+        let box1 = document.getElementById('one');
+        let box2 = document.getElementById('two');
+
+        for (i of list) {
+            i.addEventListener("dragstart", function (e) {
+                let j = e.target;
+
+                box2.addEventListener("dragover", function (e) {
+                    console.log("Dragover");
+                    e.preventDefault();
+                });
+
+                box2.addEventListener("drop", function (e) {
+                    box2.appendChild(j);
+                    console.log("Drop");
+                    j = null;
+                });
+
+                box1.addEventListener("dragover", function (e) {
+                    console.log("Dragover");
+                    e.preventDefault();
+                });
+
+                box1.addEventListener("drop", function (e) {
+                    box1.appendChild(j);
+                    console.log("Drop");
+                    j = null;
+                });
+            })
+        }
+    </script>
+</body>
+
+</html>

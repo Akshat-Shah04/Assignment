@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throttling Mouse Coordinates</title>
+</head>
+
+<body>
+    <h2>Mouse Coordinates with Throttling</h2>
+    <p id="coords">Move your mouse to see the coordinates...</p>
+
+    <script>
+        function display(event) {
+            document.getElementById('coords').innerHTML = `X: ${event.clientX}, Y: ${event.clientY}`;
+        }
+
+        function throttle(i, limit) {
+            let lastFunc;
+            let lastRan;
+            return function (...args) {
+                const context = this;
+                if (!lastRan) {
+                    i.apply(context, args);
+                    lastRan = Date.now();
+                } else {
+                    clearTimeout(lastFunc);
+                    lastFunc = setTimeout(function () {
+                        if ((Date.now() - lastRan) >= limit) {
+                            i.apply(context, args);
+                            lastRan = Date.now();
+                        }
+                    }, limit - (Date.now() - lastRan));
+                }
+            };
+        }
+
+        const res = throttle(display, 100);
+
+        document.addEventListener('mousemove', res);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<style>
+    table,
+    td,
+    th {
+        border: 2px solid black;
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <table id="tabledata">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <button id="btnExport" onclick="exportData()">Export to Excel</button>
+    <script>
+        const tbody = document.querySelector('tbody')
+        axios.get('https://dummyjson.com/users')
+            .then((res) => {
+                const users = res.data.users;
+
+                console.log(res);
+                console.log(users);
+                const htmldata = users.map((user) => {
+                    return `
+                        <tr>
+                            <td>${user.firstName} ${user.lastName}</td>
+                            <td>${user.email}</td>
+                            <td>${user.phone}</td>
+                            <td>${user.address.city}</td>
+                        </tr>
+                    `
+                }).join('')
+                tbody.innerHTML = htmldata;
+
+            })
+
+        const exportBtn = document.getElementById('btnExport')
+        exportBtn.addEventListener('click', function () {
+            var wb = XLSX.utils.book_new();
+            var ws = XLSX.utils.table_to_sheet(document.getElementById('tabledata'));
+
+            XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+            const file = `data_export_${Date.now()}.xlsx`;
+            XLSX.writeFile(wb, file)
+        })
+    </script>
+</body>
+
+</html>

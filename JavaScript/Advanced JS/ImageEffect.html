@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .container {
+            margin: 10%;
+        }
+
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+            width: 230px;
+        }
+
+        .btn-file input[type="file"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            opacity: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+    <div class="container bg-white w-75 border-dark border-1 shadow-lg rounded p-4">
+        <h1>Easy Image Editor</h1>
+        <div class="wrapper d-flex flex-row p-2">
+            <div class="editor-panel p-2">
+                <div class="my-2">Filters</div>
+                <div class="d-flex flex-column gap-2">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button class="btn btn-outline-primary" id="BrightnessBtn">Brightness</button>
+                        <button class="btn btn-outline-primary" id="SaturationBtn">Saturation</button>
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button class="btn btn-outline-primary" id="InversionBtn">Inversion</button>
+                        <button class="btn btn-outline-primary" id="GrayscaleBtn">Grayscale</button>
+                    </div>
+                </div>
+                <div class="slider">
+                    <div class="d-flex mt-3 flex-row align-items-center justify-content-between">
+                        <p class="name">Brightness</p>
+                        <p class="value">100%</p>
+                    </div>
+                    <input class="w-100" type="range" id="filterSlider" min="0" max="200" value="100">
+                </div>
+                <div class="rotate mt-4">
+                    <div class="title">Flip & Rotate</div>
+                    <div class="btn-group mt-2" role="group" aria-label="Basic example">
+                        <button class="btn btn-outline-danger px-4 py-1" id="FlipHBtn"><i
+                                class="bi bi-arrows-collapse"></i></button>
+                        <button class="btn btn-outline-danger px-4 py-1" id="FlipVBtn"><i
+                                class="bi bi-arrows-collapse-vertical"></i></button>
+                        <button class="btn btn-outline-danger px-4 py-1" id="RotateRightBtn"><i
+                                class="bi bi-arrow-clockwise"></i></button>
+                        <button class="btn btn-outline-danger px-4 py-1" id="RotateLeftBtn"><i
+                                class="bi bi-arrow-counterclockwise"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-img ms-5">
+                <img src="image-placeholder.svg" width="500px" alt="" id="previewImg">
+            </div>
+        </div>
+        <div class="controls d-flex flex-column w-50 gap-2">
+            <div class="d-flex gap-2 flex-row">
+                <button class="btn btn-outline-warning px-2 py-1" id="resetBtn">Reset Filters</button>
+                <button class="btn btn-outline-success px-2 py-1" id="saveBtn">Save Image</button>
+            </div>
+            <button class="btn btn-outline-primary btn-file">
+                Choose Image
+                <input type="file" name="" id="fileInput">
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const previewImg = document.getElementById('previewImg');
+        const filterName = document.querySelector('.name');
+        const filterValue = document.querySelector('.value');
+        const filterSlider = document.getElementById('filterSlider');
+        const resetBtn = document.getElementById('resetBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const fileInput = document.getElementById('fileInput');
+
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = () => {
+                previewImg.src = reader.result;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        let brightness = 100, saturation = 100, inversion = 0, grayscale = 0;
+        let rotate = 0, flipH = 1, flipV = 1;
+
+        const applyFilters = () => {
+            previewImg.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+            previewImg.style.transform = `rotate(${rotate}deg) scale(${flipH}, ${flipV})`;
+        };
+
+        filterSlider.addEventListener('input', () => {
+            filterValue.textContent = `${filterSlider.value}%`;
+            switch (filterName.textContent) {
+                case 'Brightness':
+                    brightness = filterSlider.value;
+                    break;
+                case 'Saturation':
+                    saturation = filterSlider.value;
+                    break;
+                case 'Inversion':
+                    inversion = filterSlider.value;
+                    break;
+                case 'Grayscale':
+                    grayscale = filterSlider.value;
+                    break;
+            }
+            applyFilters();
+        });
+
+        // Set up button click event handlers for filter options
+        document.getElementById('BrightnessBtn').addEventListener('click', () => {
+            filterName.textContent = 'Brightness';
+            filterSlider.value = brightness;
+            filterSlider.max = 200
+            filterValue.textContent = `${brightness}%`;
+        });
+
+        document.getElementById('SaturationBtn').addEventListener('click', () => {
+            filterName.textContent = 'Saturation';
+            filterSlider.value = saturation;
+            filterSlider.max = 200
+            filterValue.textContent = `${saturation}%`;
+        });
+
+        document.getElementById('InversionBtn').addEventListener('click', () => {
+            filterName.textContent = 'Inversion';
+            filterSlider.max = 100
+            filterSlider.value = inversion;
+            filterValue.textContent = `${inversion}%`;
+        });
+
+        document.getElementById('GrayscaleBtn').addEventListener('click', () => {
+            filterName.textContent = 'Grayscale';
+            filterSlider.max = 100
+            filterSlider.value = grayscale;
+            filterValue.textContent = `${grayscale}%`;
+        });
+
+        resetBtn.addEventListener('click', () => {
+            brightness = 100;
+            saturation = 100;
+            inversion = 0;
+            grayscale = 0;
+            rotate = 0;
+            flipH = 1;
+            flipV = 1;
+            applyFilters();
+            filterSlider.value = 100;
+            filterValue.textContent = '100%';
+            filterName.textContent = 'Brightness';
+        });
+
+        document.getElementById('FlipHBtn').addEventListener('click', () => {
+            flipH = flipH === 1 ? -1 : 1;
+            applyFilters();
+        });
+
+        document.getElementById('FlipVBtn').addEventListener('click', () => {
+            flipV = flipV === 1 ? -1 : 1;
+            applyFilters();
+        });
+
+        document.getElementById('RotateRightBtn').addEventListener('click', () => {
+            rotate += 90;
+            applyFilters();
+        });
+
+        document.getElementById('RotateLeftBtn').addEventListener('click', () => {
+            rotate -= 90;
+            applyFilters();
+        });
+
+        const saveImage = () => {
+            const canvas = document.getElementById('imageCanvas');
+            const context = canvas.getContext('2d');
+
+            canvas.width = previewImg.naturalWidth;
+            canvas.height = previewImg.naturalHeight;
+
+            context.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+
+            context.drawImage(previewImg, 0, 0, canvas.width, canvas.height);
+
+            const dataUrl = canvas.toDataURL('image/png');
+
+            const dLink = document.createElement('a');
+            dLink.href = dataUrl;
+            dLink.download = 'image_new.png';
+            document.body.appendChild(a);
+            dLink.click();
+            document.body.removeChild(a);
+        };
+
+        saveBtn.addEventListener('click', saveImage);
+    </script>
+</body>
+
+</html>
