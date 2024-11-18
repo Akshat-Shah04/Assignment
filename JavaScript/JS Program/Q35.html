@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" id="num" placeholder="Enter a Number" required>
+    <button onclick="sum()">Click Here</button>
+    <div>Summation is : <span id="result"></span></div>
+    <script>
+        sum = () => {
+            i = document.getElementById('num').value;
+            res = document.getElementById('result');
+            let sum = 0;
+            const numStr = i.toString();
+
+            for (k = 0; k < numStr.length; k++) {
+                sum += parseInt(numStr.charAt(k), 0);
+            }
+
+            res.innerHTML = sum;
+
+        }
+    </script>
+</body>
+
+</html>

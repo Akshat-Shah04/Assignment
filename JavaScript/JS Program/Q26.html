@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Number 1</h3>
+    <input type="number" id="n1">
+    <h3>Number 2</h3>
+    <input type="number" id="n2">
+    <h3>Number 3</h3>
+    <input type="number" id="n3">
+    <button style="padding: 20px;" onclick="compare()">Click To Compare Numbers</button>
+    <h3>Result : <span id="res"></span></h3>
+    <script>
+        function compare() {
+            let n1 = document.getElementById('n1').value;
+            let n2 = document.getElementById('n2').value;
+            let n3 = document.getElementById('n3').value;
+            let x = document.getElementById('res');
+            let result = (n1 > n2) ? (n1 > n3 ? n1 : n3) : (n2 > n3 ? n2 : n3);
+            if (result == n1) {
+                x.innerHTML = 'Number 1 is greatest number';
+            }
+            else if (result == n2) {
+                x.innerHTML = 'Number 2 is greatest number';
+            }
+            else {
+                x.innerHTML = 'Number 3 is greatest number';
+            }
+
+        }
+    </script>
+</body>
+
+</html>

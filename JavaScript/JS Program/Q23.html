@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Checker</title>
+</head>
+<body>
+    <input type="text" placeholder="Enter a character" id="char" maxlength="1" onblur="check()">
+    <span id="res">0</span>
+    <script>
+        function check() {
+            let c = document.getElementById('char').value;
+            let op = document.getElementById('res');
+            c = c.toLowerCase();
+            if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'){
+                op.innerHTML = "Vowel";
+            } else {
+                op.innerHTML = "Consonant";
+            }
+        }
+    </script>
+</body>
+</html>

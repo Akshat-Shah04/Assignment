@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        isPalindrome = (n) => {
+            let nStr = n.toString();
+            return nStr === nStr.split('').reverse().join('');
+        }
+
+        console.log('Please Enter 3 numbers');
+
+        let count = 0;
+        let num = [];
+
+        while (count < 3) {
+            let inp = prompt(`Enter number ${count + 1} : `);
+            let n = parseInt(inp);
+
+            if (!isNaN(n)) {
+                num.push(n);
+                count++;
+            } else {
+                alert("Invalid Input. Please enter a valid number...");
+             }
+        }
+
+        num.forEach((n) => {
+            if (isPalindrome(n)) {
+                console.log(`${n} is a Palindrome Number`);
+            } else {
+                console.log(`${n} is not a Palindrome Number`);
+            }
+        });
+    </script>
+</body>
+
+</html>

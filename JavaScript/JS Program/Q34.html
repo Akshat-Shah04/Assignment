@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Number</title>
+</head>
+
+<body>
+    <input type="number" name="Number" id="orig" placeholder="Enter a Number" required>
+    <button onclick="setRev()">Click Here</button>
+    <div>Reverse Number is : <span id="result"></span></div>
+
+    <script>
+        setRev = () => {
+            original = document.getElementById('orig').value;
+            rev = original.toString().split('').reverse().join('');
+            document.getElementById('result').textContent = rev;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Case | Q29</title>
+</head>
+
+<body>
+    <label>Enter a Number from 1 to 7 : </label>
+    <input type="number" id="days">
+    <button onclick="get_days()">Click Here</button>
+    <div>Result : <span id="one"></span></div>
+
+    <label>Enter a single character </label>
+    <input type="text" id="char" placeholder="a">
+    <button onclick="get_vowel()">Click Here</button>
+    <div>Result : <span id="two"></span></div>
+
+    <script>
+        get_days = () => {
+            const ch = parseInt(document.getElementById('days').value);
+            let x = "";
+            switch (ch) {
+                case 1:
+                    x = "Monday";
+                    break;
+                case 2:
+                    x = "Tuesday";
+                    break;
+                case 3:
+                    x = "Wednesday";
+                    break;
+                case 4:
+                    x = "Thursday";
+                    break;
+                case 5:
+                    x = "Friday";
+                    break;
+                case 6:
+                    x = "Saturday";
+                    break;
+                case 7:
+                    x = "Sunday";
+                    break;
+
+                default:
+                    x = "Enter Number between 1 to 7 only";
+                    break;
+            }
+            document.getElementById('one').textContent = x;
+        }
+
+        get_vowel = () => {
+            c = document.getElementById('char').value;
+            ch = c.toLowerCase();
+            x = "";
+            if(ch.length!= 1 || !/^[a-zA-Z]$/.test(ch)){
+                x = "Enter single alpahbetic character only!!!";
+            }
+            else {
+                switch (ch) {
+                    case 'a':
+                        x = ch + " is a Vowel";
+                        break;
+                    case 'e':
+                        x = ch + " is a Vowel";
+                        break;
+                    case 'i':
+                        x = ch + " is a Vowel";
+                        break;
+                    case 'o':
+                        x = ch + " is a Vowel";
+                        break;
+                    case 'u':
+                        x = ch + " is a Vowel";
+                        break;
+
+                    default:
+                        x = ch + " is a Consonant";
+                        break;
+                }
+            }
+            document.getElementById('two').textContent = x;
+        }
+
+
+    </script>
+</body>
+
+</html>

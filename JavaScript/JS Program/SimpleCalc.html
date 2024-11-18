@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            display: inline-block;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: 2px solid black;
+            margin: 10px;
+            height: 40px;
+            width: 40px;
+        }
+        input{
+            border: 2px solid black;
+        }
+        label {
+            margin: 5px;
+        }
+        #res{
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+    <form style="padding: 40px; border: 5px double red; margin: 10px;">
+        <label for="n1">Number 1:</label>
+        <input type="number" id="n1"> <br><br>
+        <label for="n2">Number 2:</label>
+        <input type="number" id="n2"> <br>
+        <button type="button" onclick="add()">+</button>
+        <button type="button" onclick="subtract()">-</button> <br>
+        <button type="button" onclick="multiply()">*</button>
+        <button type="button" onclick="divide()">/</button> <br>
+        <br>
+        <h3>Result: <span id="res"></span></h3>
+    </form>
+
+    <script>
+        function getValues() {
+            const n1 = parseFloat(document.getElementById('n1').value);
+            const n2 = parseFloat(document.getElementById('n2').value);
+            return { n1, n2 };
+        }
+
+        function add() {
+            const { n1, n2 } = getValues();
+            const result = n1 + n2;
+            document.getElementById('res').innerHTML = result;
+        }
+
+        function subtract() {
+            const { n1, n2 } = getValues();
+            const result = n1 - n2;
+            document.getElementById('res').innerHTML = result;
+        }
+
+        function multiply() {
+            const { n1, n2 } = getValues();
+            const result = n1 * n2;
+            document.getElementById('res').innerHTML = result;
+        }
+
+        function divide() {
+            const { n1, n2 } = getValues();
+            const result = n1 / n2;
+            document.getElementById('res').innerHTML = result;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>  
+    <script>
+        var filename = "example.html";
+        var i = filename.lastIndexOf(".");
+        if (i !== -1 && i !== 0) {
+            var extension = filename.slice(i + 1);
+            console.log("The extension of the file '" + filename + "' is: " + extension);
+        } else {
+            console.log("Invalid filename. Please provide a filename with an extension.");
+        }
+
+    </script>
+</body>
+
+</html>

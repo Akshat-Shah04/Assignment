@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce Example</title>
+</head>
+
+<body>
+    <input type="text" id="inputTag" placeholder="Search with debouncing..." />
+    <p id="result"></p>
+    <br>
+    <hr>
+    <br>
+    <input type="text" id="regularInp" placeholder="Search without debouncing..." />
+    <p id="result2"></p>
+
+
+    <script>
+        function one(val) {
+            document.getElementById('result').innerText = 'Input : ' + val;
+            console.log("You Typed", val);
+        }
+
+        const debouncedSearch = debounce(one, 1000);
+
+        document.getElementById('inputTag').addEventListener('input', function () {
+            debouncedSearch(this.value);
+        });
+
+        function two(val) {
+            document.getElementById('result2').innerText = 'Input : ' + val;
+            console.log("You typed", val);
+        }
+
+        document.getElementById('regularInp').addEventListener('input', function () {
+            two(this.value);
+        });
+
+        function debounce(func, delay) {
+            let debounceTimer;
+            return function (...args) {
+                const context = this;
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => func.apply(context, args), delay);
+            };
+        }
+    </script>
+</body>
+
+</html>

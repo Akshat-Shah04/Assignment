@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="result"></div>
+
+    <script>
+        function check() {
+            const str = "JavaScript is a scripting language.";
+            const word = "Script";
+            const result = str.includes(word);
+
+            document.getElementById('result').innerHTML = result ?
+                `The string contains the word "${word}".` :
+                `The string does not contain the word "${word}".`;
+        }
+
+        check();
+    </script>
+</body>
+
+</html>

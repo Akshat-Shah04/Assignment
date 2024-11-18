@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" name="Fibo" id="num" placeholder="Enter the range" required>
+    <button onclick="getFibo()">Submit</button>
+    <div>Fibonacci Series : <span id="res"></span></div>
+
+    <script>
+        function getFibo() {
+            const n = parseInt(document.getElementById('num').value);
+            let n1 = 0, n2 = 1, nT;
+            let result = '';
+
+            for (let i = 1; i <= n; i++) {
+                result += n1 + ', ';
+                nT = n1 + n2;
+                n1 = n2;
+                n2 = nT;
+            }
+
+            document.getElementById('res').textContent = result.trim();
+        }
+    </script>
+</body>
+
+</html>

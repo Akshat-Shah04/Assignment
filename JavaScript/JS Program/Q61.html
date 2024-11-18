@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Enter a String : </h3>
+    <input type="text" id="str">
+    <button onclick="splitString()">Click me</button>
+    <h3>Array : <span id="res"></span></h3>
+
+    <script>
+        splitString = () => {
+            str = document.getElementById('str').value;
+            arr = document.getElementById('res');
+            myArray = str.split('');
+            arr.innerHTML = myArray.join(',');
+            
+        }
+
+    </script>
+</body>
+
+</html>

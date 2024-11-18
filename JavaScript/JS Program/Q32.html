@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial</title>
+</head>
+
+<body>
+    <input type="number" id="num" placeholder="Enter range till you want the factorial" required>
+    <br><br>
+    <button onclick="get_Factorial()">Submit</button>
+    <div>Factorial : <span id="res"></span></div>
+    <script>
+        get_Factorial = () => {
+            n = parseInt(document.getElementById('num').value);
+            let x = check_Fact(n);
+            document.getElementById('res').textContent = x;
+
+        }
+
+        function check_Fact(n) {
+            if (n === 1 || n === 0) return 1;
+            if (n < 0) return "Invalid Input";
+            return n * check_Fact(n - 1);
+
+        }
+    </script>
+</body>
+
+</html>

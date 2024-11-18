@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="age">Enter your age:</label>
+    <input type="text" id="age">
+    <button onclick="validity()">Submit</button>
+
+    <script>
+        function validity() {
+            const age = parseInt(document.getElementById('age').value);
+            console.log("Age entered:", age);
+            
+            if (isNaN(age) || age < 18) {
+                alert("Age less than 18 is not eligible for voting");
+                return;
+            }
+
+            const name = prompt("Enter your Name : ");
+            if (name) {
+                console.log(`${name} is the name of the voter`);
+            } else {
+                console.log("Name input was cancelled.");
+                return;
+            }
+
+            const output = confirm("Are you sure to submit?");
+            if (output) {
+                console.log("Your request is submitted");
+            } else {
+                console.log("Sorry for the inconvenience");
+            }
+        }
+    </script>
+</body>
+</html>

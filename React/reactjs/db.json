@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "name": "Oranges",
+      "quantity": 12,
+      "isPurchased": "Yes"
+    },
+    {
+      "id": "1731919889874",
+      "name": "Apples",
+      "quantity": "34",
+      "isPurchased": "No"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "user1",
+      "email": "user1@gmail.com",
+      "password": "1234",
+      "status": "active"
+    },
+    {
+      "id": "1731954442902",
+      "email": "user3@gmail.com",
+      "password": "12345",
+      "name": "Akshat Shah",
+      "status": "active"
+    }
+  ]
+}
