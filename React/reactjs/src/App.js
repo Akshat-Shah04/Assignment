@@ -10,6 +10,7 @@ import Login from './Module 1/Task3/Login';
 import Index from './Module 1/Task3/Index';
 import { ToastContainer } from 'react-toastify';
 import PublicIndex from './Module 1/Task3/PublicIndex';
+import NestIndex from './Module 1/Nest/code/NestIndex';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/public-index' element={<PublicIndex />} />
           <Route path='/list' element={<Task5ListView />} />
+          <Route path='/nest' element={<NestIndex />} />
           <Route path='/loginModal' element={<Task6LoginModal />} />
         </Routes>
        </BrowserRouter>

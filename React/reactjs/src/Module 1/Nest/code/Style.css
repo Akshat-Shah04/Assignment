@@ -1,0 +1,36 @@
+.btn-hover-bounce {
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn-hover-bounce:hover {
+    animation: bounce 1s ease-in;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(-15px);
+    }
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.list-group-item:hover .dropdown-menu {
+    display: block;
+}
+
+.list-group-item:hover{}
+
+/* Optional: Align dropdown toggle with dropdown menu */
+.nav-item.dropdown:hover .nav-link {
+    background-color: transparent;
+}
