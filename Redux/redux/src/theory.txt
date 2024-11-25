@@ -1,0 +1,124 @@
+What is React Redux ?
+
+--> React Redux is the official React UI bindings layer for Redux. It lets your React components read data from a Redux store, and dispatch actions to the store to update state.
+
+What is Redux Thunk used for?
+
+--> Redux Thunk middleware allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. The inner function receives the store methods dispatch and getState as parameters.
+
+--> Any return value from the inner function will be available as the return value of dispatch itself. This is convenient for orchestrating an asynchronous control flow with thunk action creators dispatching each other and returning Promises to wait for each other’s completio
+
+
+
+What is Pure Component? When to use Pure Component over Component?
+
+--> A Pure Component in React is a class component that extends React.PureComponent instead of React.Component. It automatically implements a shallow comparison of props and state to decide whether a re-render is necessary. This can improve performance by avoiding unnecessary re-renders.
+
+--> A Pure Component only re-renders if the props or state it receives are different (based on a shallow comparison). It prevents re-renders when the values of the current and next props or state are the same.
+
+--> In following case we shoulf use Pure component over component:
+
+1. Performance Optimaiztion
+2. Props and state complexity
+3. State updates
+4. Custom shouldComponentUpdate
+
+
+--> Example of Pure component
+import React, { PureComponent } from 'react';
+
+class PureComp extends PureComponent {
+    render() {
+        console.log('PureComponent Rendered!');
+        return <div>{this.props.name}</div>;
+    }
+}
+
+export default PureComp;
+
+--> Example of Component:
+
+import React, { Component } from 'react';
+
+class Comp extends Component {
+    shouldComponentUpdate(nextProps) {
+        return nextProps.name !== this.props.name;
+    }
+
+    render() {
+        console.log('Component Rendered!');
+        return <div>{this.props.name}</div>;
+    }
+}
+
+export default Comp;
+
+--> Summary
+
+=> Use PureComponent:
+
+-> When you have simple state and props.
+-> To prevent unnecessary renders without custom logic.
+
+=> Use Component:
+
+->When you need custom control over updates.
+->For components with deeply nested or complex data structures.
+
+
+
+
+
+What is the second argument that can optionally be passed tosetState and what is its purpose?
+
+
+-> The second argument to setState in React is an optional callback function. This callback is executed after the state has been updated and the component has been re-rendered. It provides a way to perform additional actions after the state update is completed.
+
+-> Syntax:
+this.setState(updater, callback);
+
+Here,
+>> updater: The first argument is the new state value or a function that computes it.
+
+>> callback: The second argument is a function that runs after the state update is complete.
+
+--> Purpose of the Callback
+
+>> Post-State-Update Logic:
+Perform actions that rely on the updated state, such as triggering animations, making API calls, or manipulating the DOM.
+
+>> Ensuring Execution Order:
+Since setState is asynchronous, relying on the updated state immediately after calling setState may not work. The callback ensures that you perform actions after the state has been reliably updated.
+
+
+--> Example of Callback
+
+class Counter extends React.Component {
+    state = { count: 0 };
+
+    incr = () => {
+        this.setState({ count: this.state.count + 1 }, () => {
+            console.log(this.state.count); // Logs the updated value
+        });
+    };
+
+    decr = () => {
+        this.setState({ count: this.state.count - 1 }, () => {
+            console.log(this.state.count); // Logs the updated value
+        });
+    };
+    
+    zero = () => {
+        this.setState({ count: 0 }, () => {
+            console.log(this.state.count); // Logs the updated value
+        });
+    };
+
+    render() {
+        return (
+            <button onClick={this.incr}>Increment</button>;
+            <button onClick={this.decr}>Decrement</button>;
+            <button onClick={this.zero}>Reset to Zero</button>;
+        )
+    }
+}

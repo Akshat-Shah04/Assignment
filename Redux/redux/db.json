@@ -1,0 +1,36 @@
+{
+    "users": [
+        {
+            "name": "Rita Sharma",
+            "email": "rita@gmail.com",
+            "password": "32145",
+            "gender": "female",
+            "phone": "9876512367",
+            "id": "1732356951272"
+        },
+        {
+            "id": "1732360213554",
+            "name": "Shah Akshat H",
+            "email": "shahakshat200@gmail.com",
+            "phone": "09157703904",
+            "password": "1234",
+            "gender": "male"
+        },
+        {
+            "name": "Hemangi Thakur",
+            "email": "hem@google.com",
+            "password": "12345",
+            "gender": "female",
+            "phone": "9090189898",
+            "id": "1732360288507"
+        }
+    ],
+    "admin": [
+        {
+            "id": "1732356951234",
+            "username": "Aryan Shah",
+            "email": "admin@gmail.com",
+            "password": "1234"
+        }
+    ]
+}
