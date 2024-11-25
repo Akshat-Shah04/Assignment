@@ -31,6 +31,12 @@
             "username": "Aryan Shah",
             "email": "admin@gmail.com",
             "password": "1234"
+        },
+        {
+            "id": "1732389951234",
+            "username": "Akshat Shah",
+            "email": "admin1@gmail.com",
+            "password": "123"
         }
     ]
 }
